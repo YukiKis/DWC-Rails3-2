@@ -34,9 +34,12 @@
                 <li>
                   <%= link_to @post_image.favorites_path(@post_image), method: :post do %>
                     <i class="fa fa-comment"></i>
-                    <%= @post_image.post_comments.count %>　いいね
+                    <a href="#comments"><%= @post_image.post_comments.count %></a>
                   <% end %>
                 </li>
+              <% end %>
+              <% if current_user = @post_image.user %>
+                <%= link_to "削除", @post_image.path(@post_image.id), method: :delete %>
               <% end %>
             </ul>
             <div class="post-content-inner mt-20">
